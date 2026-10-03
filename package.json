@@ -1,0 +1,24 @@
+{
+  "name": "project-bis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/test_api_chat.js && node tests/test_responsive_landing_switching.js && node tests/test_landing_translations.js && node tests/test_landing_and_stop_button.js && node tests/test_recents_delete_and_isolated_history.js && node tests/test_suite.js && node tests/test_markdown_and_streaming.js && node tests/test_ecosystem_and_pipeline.js && node tests/test_full_ecosystem_domains.js",
+    "test:chat": "node tests/test_api_chat.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@google/genai": "^2.24.0",
+    "cors": "^2.8.6",
+    "dompurify": "^3.4.16",
+    "dotenv": "^18.0.3",
+    "express": "^5.2.1",
+    "highlight.js": "^11.12.0",
+    "marked": "^18.0.14"
+  }
+}

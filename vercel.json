@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "framework": null,
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 60,
+      "includeFiles": "{landing-page/**,search-page/**,shared/**,src/**,instruction.md,INSTRUCTIONS.md,desktop landing page.html,landing page 2.html}"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/index.js"
+    }
+  ]
+}

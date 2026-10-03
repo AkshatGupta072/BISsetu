@@ -1,0 +1,2165 @@
+<!DOCTYPE html><html class="h-full" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_stack" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/lib/marked.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script><script>if(typeof marked==='undefined'){document.write('<script src="/vendor/marked/marked.umd.js"><\/script>');}if(typeof DOMPurify==='undefined'){document.write('<script src="/vendor/dompurify/purify.min.js"><\/script>');}</script><script id="tailwind-config">
+const SANS_STACK = ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "Roboto", "'Noto Sans Devanagari'", "'Nirmala UI'", "'Helvetica Neue'", "Arial", "sans-serif"];
+const MONO_STACK = ["'JetBrains Mono'", "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "'Liberation Mono'", "'Courier New'", "monospace"];
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "error": "#ba1a1a", "on-tertiary-fixed": "#002204", "surface-container-high": "#e9e8ea",
+        "on-error-container": "#93000a", "on-tertiary-container": "#65b563", "on-primary-container": "#81a6d7",
+        "on-secondary-fixed-variant": "#872100", "on-secondary": "#ffffff", "primary-container": "#0d3b66",
+        "surface-variant": "#e3e2e4", "surface": "#faf9fb", "on-background": "#1b1c1e",
+        "on-primary-fixed": "#001c38", "on-primary": "#ffffff", "inverse-primary": "#a4c9fc",
+        "secondary": "#b02e00", "surface-container-lowest": "#ffffff", "on-error": "#ffffff",
+        "secondary-fixed-dim": "#ffb5a0", "surface-container-low": "#f5f3f5", "on-tertiary": "#ffffff",
+        "tertiary-fixed-dim": "#88d982", "error-container": "#ffdad6", "on-surface-variant": "#42474f",
+        "surface-dim": "#dbd9dc", "secondary-container": "#fe5825", "primary-fixed-dim": "#a4c9fc",
+        "tertiary-container": "#00440d", "inverse-on-surface": "#f2f0f3", "on-secondary-container": "#541100",
+        "inverse-surface": "#2f3032", "surface-container-highest": "#e3e2e4", "on-tertiary-fixed-variant": "#005312",
+        "on-surface": "#1b1c1e", "surface-tint": "#3a608d", "tertiary-fixed": "#a3f69c",
+        "background": "#faf9fb", "surface-bright": "#faf9fb", "surface-container": "#efedf0",
+        "primary": "#002546", "on-primary-fixed-variant": "#204874", "secondary-fixed": "#ffdbd1",
+        "tertiary": "#002b06", "outline-variant": "#c3c6d0", "on-secondary-fixed": "#3b0900",
+        "outline": "#737780", "primary-fixed": "#d3e4ff"
+      },
+      "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+      "spacing": { "margin-desktop": "2rem", "gutter-desktop": "1.5rem", "space-sm": "0.5rem", "margin": "1rem", "space-xs": "0.25rem", "gutter": "1rem", "space-lg": "1.25rem", "space-md": "0.75rem", "space-xl": "2rem" },
+      "fontFamily": {
+        "headline-md": SANS_STACK,
+        "button-text": SANS_STACK,
+        "headline-lg-mobile": SANS_STACK,
+        "label-badge": SANS_STACK,
+        "headline-lg": SANS_STACK,
+        "body-md": SANS_STACK,
+        "headline-xl-mobile": SANS_STACK,
+        "body-sm": SANS_STACK,
+        "body-lg": SANS_STACK,
+        "label-code": MONO_STACK,
+        "headline-xl": SANS_STACK,
+        "sans": SANS_STACK
+      },
+      "fontSize": {
+        "headline-md": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+        "button-text": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "-0.005em", "fontWeight": "500" }],
+        "headline-lg-mobile": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+        "label-badge": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+        "headline-lg": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+        "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+        "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+        "body-sm": ["0.8125rem", { "lineHeight": "1.375rem", "fontWeight": "400" }],
+        "body-lg": ["1rem", { "lineHeight": "1.625rem", "fontWeight": "400" }],
+        "label-code": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+        "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.025em", "fontWeight": "600" }]
+      }
+    }
+  }
+};</script><style>
+:root {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Devanagari', 'Nirmala UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden !important;
+    position: relative;
+    overscroll-behavior-x: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y pinch-zoom;
+    font-family: var(--font-sans) !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  button, input, select, textarea {
+    font-family: var(--font-sans) !important;
+  }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+  main > :first-child { margin-top: 0 !important; }
+  main > :last-child { margin-bottom: 0 !important; }
+}
+::-webkit-scrollbar { display: none; }
+
+/* Universal strict sans-serif font stack for entire AI response and all its children */
+.ai-response-card,
+.ai-response-card *,
+.ai-prose,
+.ai-prose *,
+.ai-response,
+.ai-response *,
+.source-container,
+.source-container *,
+.source-panel,
+.source-panel *,
+.source-toggle-btn {
+  font-family: var(--font-sans) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Monospace font STRICTLY and ONLY for code elements */
+.ai-response-card code,
+.ai-response-card pre,
+.ai-response-card pre *,
+.ai-response-card kbd,
+.ai-response-card samp,
+.ai-prose code,
+.ai-prose pre,
+.ai-prose pre *,
+.ai-prose kbd,
+.ai-prose samp,
+.ai-code-wrapper,
+.ai-code-wrapper * {
+  font-family: var(--font-mono) !important;
+}
+
+/* Italic text must STRICTLY stay in the same sans-serif family, NEVER switch to serif */
+.ai-response-card em,
+.ai-response-card i,
+.ai-prose em,
+.ai-prose i,
+.ai-response em,
+.ai-response i,
+.source-panel em,
+.source-panel i,
+em, i {
+  font-family: var(--font-sans) !important;
+  font-style: italic !important;
+}
+
+/* Bold text must STRICTLY stay in the same sans-serif family with 600 weight */
+.ai-response-card strong,
+.ai-response-card b,
+.ai-prose strong,
+.ai-prose b,
+.ai-response strong,
+.ai-response b,
+.source-panel strong,
+.source-panel b,
+strong, b {
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  color: #002546;
+}
+
+/* Explicit font-family inheritance across all Markdown elements */
+.ai-prose p,
+.ai-prose li,
+.ai-prose a,
+.ai-prose span,
+.ai-prose td,
+.ai-prose th,
+.ai-prose blockquote,
+.ai-prose h1,
+.ai-prose h2,
+.ai-prose h3,
+.ai-prose h4 {
+  font-family: var(--font-sans) !important;
+}
+
+/* AI Prose sizing, line-height, and paragraph spacing */
+.ai-prose {
+  font-size: 15.5px;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+  color: #1e293b;
+  word-break: break-word;
+}
+
+.ai-prose p {
+  margin-top: 0;
+  margin-bottom: 0.85rem;
+  line-height: 1.65;
+}
+
+.ai-prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* Heading hierarchy */
+.ai-prose h1, .ai-prose h2, .ai-prose h3, .ai-prose h4 {
+  color: #002546;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em;
+  margin-top: 1.15rem;
+  margin-bottom: 0.45rem;
+}
+.ai-prose h1 { font-size: 1.25rem; line-height: 1.5rem; }
+.ai-prose h2 { font-size: 1.125rem; line-height: 1.45rem; }
+.ai-prose h3 { font-size: 1.05rem; line-height: 1.4rem; }
+.ai-prose h4 { font-size: 0.95rem; line-height: 1.35rem; }
+
+/* Clean bullet indentation & nested lists */
+.ai-prose ul {
+  list-style-type: disc !important;
+  margin-top: 0.4rem;
+  margin-bottom: 0.85rem;
+  padding-left: 1.5rem !important;
+}
+
+.ai-prose ol {
+  list-style-type: decimal !important;
+  margin-top: 0.4rem;
+  margin-bottom: 0.85rem;
+  padding-left: 1.5rem !important;
+}
+
+.ai-prose ul ul {
+  list-style-type: circle !important;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.35rem !important;
+  padding-left: 1.25rem !important;
+}
+
+.ai-prose ul ul ul {
+  list-style-type: square !important;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+  padding-left: 1.25rem !important;
+}
+
+.ai-prose ol ol {
+  list-style-type: lower-alpha !important;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.35rem !important;
+  padding-left: 1.25rem !important;
+}
+
+.ai-prose li {
+  margin-bottom: 0.4rem;
+  line-height: 1.62;
+}
+
+.ai-prose li > p {
+  margin-bottom: 0.35rem;
+}
+
+.ai-prose li:last-child {
+  margin-bottom: 0;
+}
+
+.ai-prose li::marker {
+  color: #ea580c;
+}
+
+.ai-prose ol li::marker {
+  color: #002546;
+  font-weight: 600;
+}
+
+/* Blockquote */
+.ai-prose blockquote {
+  border-left: 3px solid #ea580c;
+  padding: 0.5rem 0.85rem;
+  margin: 0.75rem 0;
+  background-color: #f8fafc;
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: #334155;
+}
+
+/* Links */
+.ai-prose a {
+  color: #0d3b66;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+
+.ai-prose a:hover {
+  color: #ea580c;
+}
+
+.ai-prose code:not(pre code) {
+  font-size: 0.825rem;
+  background-color: #f1f5f9;
+  color: #002546;
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  border: 1px solid #e2e8f0;
+}
+
+.user-bubble-text {
+  font-family: var(--font-sans) !important;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #1c1d1f;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- COMPACT SOURCE & ACTION BUTTONS (Copy, Listen, Sources) --- */
+.source-container {
+  position: relative;
+  display: inline-block;
+}
+
+.source-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5.5px;
+  padding: 4px 11px;
+  border-radius: 9999px;
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1;
+  transition: all 150ms ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ai-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  transition: all 150ms ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ai-action-btn:hover,
+.source-btn:hover,
+.source-container.is-active .source-btn,
+.source-container:hover .source-btn {
+  background-color: #e2e8f0;
+  color: #002546;
+  border-color: #cbd5e1;
+}
+
+.ai-action-btn:active {
+  transform: scale(0.96);
+}
+
+.source-panel {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  right: 0;
+  left: auto;
+  width: 280px;
+  max-width: min(280px, calc(100vw - 2.5rem));
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 37, 70, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  padding: 10px;
+  z-index: 40;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+  pointer-events: none;
+}
+
+/* Desktop Hover: Smooth 150-250ms reveal */
+@media (hover: hover) and (pointer: fine) {
+  .source-container:hover .source-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* Mobile & Click Toggle: .is-active */
+.source-container.is-active .source-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.source-item-link {
+  display: block;
+  padding: 7px 9px;
+  border-radius: 8px;
+  transition: background-color 150ms ease;
+  text-decoration: none !important;
+  text-align: left;
+}
+
+.source-item-link:hover {
+  background-color: #f8fafc;
+}
+
+/* Fully enable text selection and copying of user questions and AI answers */
+#chatStream,
+#chatStream *,
+.user-bubble-text,
+.user-bubble-text *,
+.user-message-bubble,
+.user-message-bubble *,
+.ai-response-card,
+.ai-response-card *,
+.ai-prose,
+.ai-prose * {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+::selection {
+  background-color: #FED7AA !important;
+  color: #0F172A !important;
+}
+::-moz-selection {
+  background-color: #FED7AA !important;
+  color: #0F172A !important;
+}
+</style>
+<script src="/shared/fullTranslationsData.js"></script>
+<script src="/shared/voiceEngine.js"></script>
+<script src="/shared/appSidebar.js"></script>
+<script>if(typeof customElements.get('app-sidebar')==='undefined'){document.write('<script src="../shared/appSidebar.js"><\/script>');}</script>
+</head><body class="font-body-md text-body-md text-on-surface flex flex-col min-h-full w-full max-w-full overflow-x-hidden selection:bg-orange-200 selection:text-slate-900" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCsXPkF-6BUnmdO1koU8b0bGO1QIz4oSF9F4bzQdTY78pNzXS270UFaaPqHcPZ7MEdYaQ1g7ZjI9ylqkkWNjIoaYCwep26ZfaIIf3LRNn3NKCYbvgkGyD-GedYNiTD9uqYGg88OOxEjz7320tlNHjP2OQP2FfXrBEI1dmCKBggVv1bfmExE0CwwmaAHeX4-uvu4l0rP4z3A4yLtEDl0_pJJSBZfrvJMEarsoifB0llDgFVbyaBrKkQ0Hb9w0iFyqt2NjA&quot;); background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed;"><header class="fixed top-0 w-full max-w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(13,59,102,0.04)] overflow-hidden"></header><main class="flex-1 flex flex-col relative w-full max-w-full pb-safe px-3 sm:px-margin pt-safe overflow-x-hidden box-border"><div class="flex flex-col w-full max-w-full relative min-h-[calc(100vh-4rem)] justify-between overflow-x-hidden px-space-xs pb-space-lg box-border">
+<!-- Dynamic Tricolor Wave & Ashoka Chakra Ambient Canvas -->
+<div class="absolute inset-0 pointer-events-none -z-10 overflow-hidden"></div>
+<!-- Top Navigation & Institutional Badge -->
+<div class="w-full max-w-full flex items-center justify-between pt-space-xs px-space-xs z-10 box-border">
+<!-- Hamburger Side Bar Trigger (Shared Style) -->
+<button aria-label="Open Navigation Menu" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-[0_2px_10px_-2px_rgba(13,59,102,0.12)] border border-orange-100/80 flex flex-col items-center justify-center gap-[4.5px] text-[#EA580C] hover:bg-orange-50/50 cursor-pointer active:scale-95 transition-all shrink-0" id="sideNavToggle" onclick="window.openAppSidebar();" type="button">
+  <span class="w-4 h-[2px] bg-[#EA580C] rounded-full"></span>
+  <span class="w-3.5 h-[2px] bg-[#EA580C] rounded-full"></span>
+  <span class="w-4 h-[2px] bg-[#EA580C] rounded-full"></span>
+</button>
+<!-- New Chat Action Button (Exclusively on Search Page) -->
+<button aria-label="Start New Chat" id="btnTopNewChat" onclick="if(typeof window.startNewChat==='function'){window.startNewChat();}else{window.location.href='/search';}" class="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full bg-white shadow-[0_2px_8px_-2px_rgba(13,59,102,0.1)] border border-orange-100/80 text-xs font-semibold text-[#0F2C59] hover:text-[#EA580C] hover:border-orange-300 transition-all cursor-pointer active:scale-95 shrink-0" type="button" title="Start a fresh chat" data-i18n-title="new_chat">
+  <svg class="w-4 h-4 text-[#EA580C]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+  </svg>
+  <span data-i18n="new_chat">New Chat</span>
+</button>
+</div>
+<!-- Single Shared AppSidebar Component -->
+<app-sidebar active-page="search"></app-sidebar>
+<!-- Center Branding & Identity Area -->
+<div class="w-full max-w-full flex flex-col items-center justify-center my-auto py-space-xl px-space-sm z-10 text-center overflow-hidden" id="brandingCenter"><div class="relative flex items-center justify-center max-w-full"><div class="absolute -inset-2 bg-gradient-to-tr from-tertiary-fixed/20 via-secondary-fixed/25 to-primary-fixed/20 rounded-full blur-xl pointer-events-none"></div><div class="w-32 h-32 sm:w-36 sm:h-36 relative z-10 flex items-center justify-center drop-shadow-md hover:scale-105 transition-transform duration-300"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1v-Wa0mgsYEMQJmyuz8BAyl7pcgWiZs5VLvHiAZHd4by9wuueds2ebkR2xvZ_ZtdPhFB7ZMo5lL1vkX1G7nhBL5XsqRnejkoQ_yt1KUZf5DvYZu8HxhdMYM6ii7irci0ng-SXd_Ne5pvrg4iUPTFw7F3iQRKwZvS21HS8vjsaws9tWhAkG6nt0lhyB1_xYVWmhvQPbPjQ0Jk6EEw_Cc1xF07bmWLoo1TnKpaMJHwwd3NmRtcygTTyWhiTwtvKo36ppA" alt="National Emblem" class="w-full h-full object-contain drop-shadow-sm"></div></div></div>
+<!-- Active Chat Stream Container -->
+<div class="w-full max-w-2xl mx-auto flex-1 overflow-y-auto overflow-x-hidden z-10 py-3 px-1 hidden flex flex-col space-y-4 box-border" id="chatStream" style="max-height: calc(100vh - 13rem); overscroll-behavior: contain;"></div>
+<!-- Bottom Section: Sleek Search Input -->
+<div class="w-full max-w-2xl mx-auto flex flex-col gap-space-md z-20 pb-space-sm px-1 box-border">
+<!-- Attachment Preview Badge -->
+<div id="attachmentPreviewContainer" class="hidden mb-2 px-3.5 py-2 bg-white border border-slate-200/90 rounded-2xl shadow-xs flex items-center justify-between gap-3 max-w-md animate-fade-in box-border">
+  <div class="flex items-center gap-2.5 overflow-hidden min-w-0">
+    <div class="relative w-10 h-10 rounded-lg overflow-hidden border border-slate-200 shrink-0 bg-slate-50 flex items-center justify-center">
+      <img id="attachmentImgPreview" src="" class="w-full h-full object-cover" alt="Attachment">
+      <div id="attachmentDocIcon" class="w-full h-full flex items-center justify-center bg-orange-50 text-orange-600 hidden">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      </div>
+    </div>
+    <div class="flex flex-col min-w-0">
+      <span id="attachmentFileName" class="text-xs text-slate-800 font-semibold truncate">Attached Photo</span>
+      <span id="attachmentSubText" class="text-[10.5px] text-slate-400 truncate">Photo attached • Type your question below</span>
+    </div>
+  </div>
+  <button id="btnRemoveAttachment" class="text-slate-400 hover:text-red-500 hover:bg-red-50 w-7 h-7 rounded-full flex items-center justify-center transition-colors cursor-pointer text-sm font-bold shrink-0" title="Remove attachment">✕</button>
+</div>
+<!-- Subtle Validation Message -->
+<div id="imageHintMessage" class="hidden text-xs text-amber-700 bg-amber-50/95 border border-amber-200/90 px-3.5 py-1.5 rounded-full mb-1.5 self-center animate-fade-in flex items-center gap-1.5 shadow-2xs max-w-[90%] text-center">
+  <span class="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0"></span>
+  <span id="imageHintText">Please enter a question about the image.</span>
+</div>
+<!-- Elevated Sleek Search Input Pill -->
+<div class="relative w-full max-w-full bg-surface-container-lowest/95 backdrop-blur-xl rounded-full shadow-[0_8px_30px_-6px_rgba(13,59,102,0.15)] p-1.5 flex items-center justify-between transition-all focus-within:shadow-[0_10px_35px_-4px_rgba(254,88,37,0.2)] box-border">
+<!-- Plus Action / Attachment Trigger -->
+<button aria-label="Add attachment or context" class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full flex items-center justify-center text-slate-400 hover:text-primary active:scale-90 transition-all cursor-pointer" id="btnAttachment" data-i18n-title="upload_label">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+</button>
+<input type="file" id="fileInputUpload" accept="image/*,.pdf,.txt,.doc,.docx,.csv" class="hidden">
+<!-- Search Input Field -->
+<input autocomplete="off" class="flex-1 min-w-0 w-0 bg-transparent border-0 outline-none text-on-surface placeholder:text-outline/75 px-space-xs font-body-md text-body-md" id="standardsSearchInput" placeholder="Ask anything about BIS standards..." data-i18n-placeholder="search_placeholder" type="text">
+<!-- Action Controls Group: Camera, Microphone, Send -->
+<div class="flex items-center gap-1 shrink-0">
+  <!-- Camera Button -->
+  <button aria-label="Visual Search with Camera" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-slate-400 hover:text-primary active:scale-90 transition-all cursor-pointer" id="btnCamera" data-i18n-title="camera_label">
+    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+  </button>
+  <input type="file" id="cameraInputUpload" accept="image/*" capture="environment" class="hidden">
+  <!-- Voice / Mic Button -->
+  <button aria-label="Voice Input" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-slate-400 hover:text-primary active:scale-90 transition-all cursor-pointer" id="btnVoice" data-i18n-title="voice_label">
+    <svg class="w-4 h-4 sm:w-5 sm:h-5" id="micIconSvg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+  </button>
+  <!-- Send / Stop Button (Saffron Accent) -->
+  <button aria-label="Send message" title="Send message" class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full bg-secondary-container hover:bg-secondary text-on-secondary shadow-md flex items-center justify-center active:scale-95 transition-transform ml-0.5 cursor-pointer" id="sendPromptBtn" onclick="handleSendOrStop()" data-i18n-title="send_query">
+    <span id="sendStopIconSlot" class="flex items-center justify-center">
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-0.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+    </span>
+  </button>
+</div>
+</div>
+</div>
+<!-- Sovereign Micro Footer -->
+<p class="text-center font-label-badge text-label-badge text-outline/80 tracking-wide px-2" data-i18n="bis_tagline">
+      Official AI Assistant • India’s National Standards Body
+    </p>
+</div>
+</div>
+<script>
+  // Lock horizontal scroll behavior completely
+  window.addEventListener('scroll', () => {
+    if (window.scrollX !== 0) {
+      window.scrollTo(0, window.scrollY);
+    }
+  }, { passive: true });
+
+  // State
+  let conversationHistory = [];
+  let currentConversationContext = null;
+  let currentAttachedImage = null; // { mimeType, data, name }
+  let speechRecognizer = null;
+  let isRecordingVoice = false;
+  let activeSpeechUtterance = null;
+  let activeSpeechBtn = null;
+
+  // Drawer Controls
+  const sideNavToggle = document.getElementById('sideNavToggle');
+
+  function openDrawerNav() {
+    if (typeof window.openAppSidebar === 'function') {
+      window.openAppSidebar();
+    }
+  }
+
+  function closeDrawerNav() {
+    if (typeof window.closeAppSidebar === 'function') {
+      window.closeAppSidebar();
+    }
+  }
+
+  if (sideNavToggle) {
+    sideNavToggle.onclick = openDrawerNav;
+  }
+
+  // --- TAB SESSIONS & RECENT TAB CONVERSATION ISOLATION ---
+  let currentActiveTab = null;
+
+  function getTabSessions() {
+    try {
+      return JSON.parse(localStorage.getItem('manak_tab_sessions') || '{}');
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveTabTurn(tabKey, userTurn, modelTurn) {
+    if (!tabKey) return;
+    const cleanKey = tabKey.trim();
+    try {
+      const sessions = getTabSessions();
+      if (!sessions[cleanKey]) {
+        sessions[cleanKey] = {
+          query: cleanKey,
+          createdAt: Date.now(),
+          turns: []
+        };
+      }
+      if (userTurn) {
+        sessions[cleanKey].turns.push(userTurn);
+      }
+      if (modelTurn) {
+        sessions[cleanKey].turns.push(modelTurn);
+      }
+      localStorage.setItem('manak_tab_sessions', JSON.stringify(sessions));
+    } catch (e) {
+      console.warn('Failed to save tab session turn:', e);
+    }
+  }
+
+  // Load a single specific recent tab with STRICT conversation isolation
+  window.loadRecentTab = function(query) {
+    if (!query) return;
+    const cleanQuery = query.trim();
+
+    // Abort active streaming if in progress
+    if (isGenerating && activeAbortController) {
+      try { activeAbortController.abort(); } catch (e) {}
+      isGenerating = false;
+      setGeneratingState(false);
+    }
+
+    currentActiveTab = cleanQuery;
+
+    const chatStream = document.getElementById('chatStream');
+    const branding = document.getElementById('brandingCenter');
+    const input = document.getElementById('standardsSearchInput');
+
+    if (input) input.value = '';
+    currentAttachedImage = null;
+    hideAttachmentPreview();
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    closeDrawerNav();
+
+    // STRICT ISOLATION: completely wipe chatStream before rendering this tab
+    if (chatStream) {
+      chatStream.innerHTML = '';
+      chatStream.classList.remove('hidden');
+    }
+    if (branding) {
+      branding.classList.add('hidden');
+    }
+
+    // Wipe conversation history & context so other tabs are NOT mixed
+    conversationHistory = [];
+    currentConversationContext = null;
+
+    // Check if this tab has saved session turns
+    const sessions = getTabSessions();
+    const tabData = sessions[cleanQuery];
+
+    if (tabData && Array.isArray(tabData.turns) && tabData.turns.length > 0) {
+      // Render ONLY this tab's turns
+      tabData.turns.forEach(turn => {
+        if (turn.role === 'user') {
+          appendUserBubble(turn.content || turn.query || cleanQuery, turn.image || null);
+          conversationHistory.push({
+            role: 'user',
+            content: turn.content || turn.query || cleanQuery,
+            query: turn.content || turn.query || cleanQuery
+          });
+        } else if (turn.role === 'model') {
+          appendAiBubble(turn.content || turn.answer || '', turn.results || [], turn.sources || []);
+          conversationHistory.push({
+            role: 'model',
+            content: turn.content || turn.answer || ''
+          });
+        }
+      });
+      if (chatStream) chatStream.scrollTop = chatStream.scrollHeight;
+    } else {
+      // If no cached turns exist yet, execute the search once and it will automatically cache
+      submitQuery(cleanQuery);
+    }
+  };
+
+  window.setQueryAndSubmit = function(query) {
+    window.loadRecentTab(query);
+  };
+
+  window.startNewChat = function() {
+    if (isGenerating && activeAbortController) {
+      try { activeAbortController.abort(); } catch (e) {}
+      isGenerating = false;
+      setGeneratingState(false);
+    }
+
+    currentActiveTab = null;
+    const input = document.getElementById('standardsSearchInput');
+    if (input) input.value = '';
+    clearConversation();
+  };
+
+  window.onCurrentTabDeleted = function(deletedTab) {
+    if (currentActiveTab && currentActiveTab.toLowerCase() === deletedTab.toLowerCase()) {
+      window.startNewChat();
+    }
+  };
+
+  function clearConversation() {
+    conversationHistory = [];
+    currentConversationContext = null;
+    currentAttachedImage = null;
+    hideAttachmentPreview();
+    const chatStream = document.getElementById('chatStream');
+    const branding = document.getElementById('brandingCenter');
+    if (chatStream) {
+      chatStream.innerHTML = '';
+      chatStream.classList.add('hidden');
+    }
+    if (branding) branding.classList.remove('hidden');
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    closeDrawerNav();
+  }
+
+  // --- ATTACHMENT & IMAGE INPUT ---
+  const btnAttachment = document.getElementById('btnAttachment');
+  const fileInputUpload = document.getElementById('fileInputUpload');
+  const btnCamera = document.getElementById('btnCamera');
+  const cameraInputUpload = document.getElementById('cameraInputUpload');
+  const attachmentPreviewContainer = document.getElementById('attachmentPreviewContainer');
+  const attachmentImgPreview = document.getElementById('attachmentImgPreview');
+  const attachmentFileName = document.getElementById('attachmentFileName');
+  const btnRemoveAttachment = document.getElementById('btnRemoveAttachment');
+  const imageHintMessage = document.getElementById('imageHintMessage');
+  const imageHintText = document.getElementById('imageHintText');
+
+  function showValidationHint(msg) {
+    if (imageHintMessage && imageHintText) {
+      imageHintText.innerText = msg || 'Please enter a question about the image.';
+      imageHintMessage.classList.remove('hidden');
+    }
+  }
+
+  function hideValidationHint() {
+    if (imageHintMessage) {
+      imageHintMessage.classList.add('hidden');
+    }
+  }
+
+  function showAttachmentPreview(imgSrc, name, isDoc = false, mimeType = '') {
+    if (!attachmentPreviewContainer) return;
+    const isImage = !isDoc && (mimeType ? mimeType.startsWith('image/') : (typeof imgSrc === 'string' && (imgSrc.startsWith('data:image/') || imgSrc.startsWith('blob:') || imgSrc.startsWith('http'))));
+    const docIcon = document.getElementById('attachmentDocIcon');
+    const subText = document.getElementById('attachmentSubText');
+
+    if (isImage && attachmentImgPreview) {
+      attachmentImgPreview.src = imgSrc;
+      attachmentImgPreview.classList.remove('hidden');
+      if (docIcon) docIcon.classList.add('hidden');
+    } else {
+      if (attachmentImgPreview) {
+        attachmentImgPreview.src = '';
+        attachmentImgPreview.classList.add('hidden');
+      }
+      if (docIcon) docIcon.classList.remove('hidden');
+    }
+
+    if (attachmentFileName) attachmentFileName.innerText = name || (isImage ? 'Attached Photo' : 'Attached Document');
+    if (subText) subText.innerText = (isImage ? 'Photo attached' : 'Document attached') + ' • Type your question below';
+    attachmentPreviewContainer.classList.remove('hidden');
+    hideValidationHint();
+    const input = document.getElementById('standardsSearchInput');
+    if (input) {
+      input.placeholder = isImage
+        ? "Ask a question about this photo (e.g. Is this product BIS certified?)..."
+        : "Ask a question about this document (e.g. What Indian Standards apply?)...";
+      input.focus();
+    }
+  }
+
+  function hideAttachmentPreview() {
+    currentAttachedImage = null;
+    if (attachmentPreviewContainer) {
+      attachmentPreviewContainer.classList.add('hidden');
+      if (attachmentImgPreview) {
+        attachmentImgPreview.src = '';
+        attachmentImgPreview.classList.add('hidden');
+      }
+      const docIcon = document.getElementById('attachmentDocIcon');
+      if (docIcon) docIcon.classList.add('hidden');
+    }
+    if (fileInputUpload) fileInputUpload.value = '';
+    if (cameraInputUpload) cameraInputUpload.value = '';
+    hideValidationHint();
+    const input = document.getElementById('standardsSearchInput');
+    if (input) {
+      input.placeholder = "Ask about Indian Standards, ISI marks, certifications...";
+    }
+  }
+
+  if (btnRemoveAttachment) {
+    btnRemoveAttachment.addEventListener('click', hideAttachmentPreview);
+  }
+
+  if (btnAttachment && fileInputUpload) {
+    btnAttachment.addEventListener('click', () => {
+      fileInputUpload.value = '';
+      fileInputUpload.click();
+    });
+    fileInputUpload.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      handleFileUpload(file);
+    });
+  }
+
+  if (btnCamera && cameraInputUpload) {
+    btnCamera.addEventListener('click', () => {
+      cameraInputUpload.value = '';
+      cameraInputUpload.click();
+    });
+    cameraInputUpload.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      handleFileUpload(file);
+    });
+  }
+
+  function handleFileUpload(file) {
+    if (!file) return;
+    const isImage = file.type ? file.type.startsWith('image/') : /\.(jpe?g|png|webp|gif|bmp|svg|jfif|heic|heif)$/i.test(file.name);
+    const isPdf = (file.type === 'application/pdf') || /\.pdf$/i.test(file.name);
+    const detectedMime = file.type || (isImage ? 'image/jpeg' : isPdf ? 'application/pdf' : 'text/plain');
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const base64 = event.target.result;
+      currentAttachedImage = {
+        mimeType: detectedMime,
+        data: base64,
+        name: file.name,
+        isDocument: !isImage,
+        size: file.size
+      };
+      showAttachmentPreview(base64, file.name, !isImage, detectedMime);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Drag and drop attachment support
+  window.addEventListener('dragover', (e) => e.preventDefault());
+  window.addEventListener('drop', (e) => {
+    e.preventDefault();
+    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      handleFileUpload(e.dataTransfer.files[0]);
+    }
+  });
+
+  // --- REAL SPEECH RECOGNITION (Web Speech API via VoiceRecognitionEngine) ---
+  let searchVoiceEngine = null;
+  if (typeof VoiceRecognitionEngine !== 'undefined') {
+    searchVoiceEngine = new VoiceRecognitionEngine({
+      inputElementId: 'standardsSearchInput',
+      btnElementId: 'btnVoice',
+      silenceMs: 2000,
+      onSubmit: function(query) {
+        if (typeof submitQuery === 'function') {
+          submitQuery(query);
+        }
+      }
+    });
+  }
+
+  const btnVoice = document.getElementById('btnVoice');
+  if (btnVoice) {
+    btnVoice.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (searchVoiceEngine) {
+        searchVoiceEngine.toggle();
+      }
+    });
+  }
+
+  // --- COMPREHENSIVE SEARCH PAGE LOCALIZATION ---
+  window.applySearchLanguage = function(code) {
+    const safeCode = (code || localStorage.getItem('manak_lang') || 'en').toLowerCase();
+    try {
+      localStorage.setItem('manak_lang', safeCode);
+      localStorage.setItem('bis_lang', safeCode);
+      sessionStorage.setItem('manak_lang', safeCode);
+      sessionStorage.setItem('bis_lang', safeCode);
+    } catch (e) {}
+
+    const t = (window.MANAK_TRANSLATIONS && window.MANAK_TRANSLATIONS[safeCode])
+      ? window.MANAK_TRANSLATIONS[safeCode]
+      : ((window.MANAK_TRANSLATIONS && window.MANAK_TRANSLATIONS['en']) || {});
+
+    // 1. Text nodes
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) {
+        if (typeof t[key] === 'string' && t[key].includes('<br')) {
+          el.innerHTML = t[key];
+        } else {
+          el.textContent = t[key];
+        }
+      }
+    });
+
+    // 2. Input placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (t[key] !== undefined) {
+        el.placeholder = t[key];
+      }
+    });
+
+    // 3. Tooltips & titles
+    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+      const key = el.getAttribute('data-i18n-title');
+      if (t[key] !== undefined) {
+        el.title = t[key];
+      }
+    });
+
+    // 4. Aria labels
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const key = el.getAttribute('data-i18n-aria');
+      if (t[key] !== undefined) {
+        el.setAttribute('aria-label', t[key]);
+      }
+    });
+
+    // 5. Explicitly update search input placeholder
+    const searchInput = document.getElementById('standardsSearchInput');
+    if (searchInput) {
+      searchInput.placeholder = t.search_placeholder || t.desktop_search_placeholder || 'Ask anything about BIS standards...';
+    }
+
+    // 6. Update document lang
+    document.documentElement.lang = safeCode;
+  };
+
+  // Synchronize language from URL parameter or saved storage on mount
+  const urlLang = new URLSearchParams(window.location.search).get('lang');
+  const initialLang = (urlLang || localStorage.getItem('manak_lang') || 'en').toLowerCase();
+  window.applySearchLanguage(initialLang);
+
+  window.addEventListener('languagechange', (e) => {
+    if (e.detail && e.detail.language) {
+      window.applySearchLanguage(e.detail.language);
+    }
+  });
+
+  // --- TEXT-TO-SPEECH (TTS) ---
+  function stripMarkdownForSpeech(text) {
+    if (!text) return '';
+    return text
+      .replace(/```[\s\S]*?```/g, '') // remove code blocks
+      .replace(/`([^`]+)`/g, '$1')
+      .replace(/\*\*(.*?)\*\*/g, '$1')
+      .replace(/\*(.*?)\*/g, '$1')
+      .replace(/_{1,2}(.*?)_{1,2}/g, '$1')
+      .replace(/^#{1,6}\s+/gm, '')
+      .replace(/^[•*-]\s+/gm, '')
+      .replace(/^\d+\.\s+/gm, '')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      .replace(/http\S+/g, '')
+      .replace(/\|/g, ' ')
+      .replace(/Key points:|Answer:|Source:/gi, '')
+      .trim();
+  }
+
+  function speakAnswer(btn, text) {
+    if (!('speechSynthesis' in window)) {
+      alert("Speech synthesis is not supported in this browser.");
+      return;
+    }
+
+    const iconSlot = btn.querySelector('.tts-icon-slot');
+
+    if (activeSpeechBtn === btn && window.speechSynthesis.speaking) {
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+        if (iconSlot) iconSlot.innerHTML = `<svg class="w-3.5 h-3.5 tts-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`;
+      } else {
+        window.speechSynthesis.pause();
+        if (iconSlot) iconSlot.innerHTML = `<svg class="w-3.5 h-3.5 tts-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
+      }
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    if (activeSpeechBtn && activeSpeechBtn !== btn) {
+      const prevSlot = activeSpeechBtn.querySelector('.tts-icon-slot');
+      if (prevSlot) prevSlot.innerHTML = `<svg class="w-3.5 h-3.5 tts-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+      activeSpeechBtn.classList.remove('text-[#EA580C]');
+    }
+
+    const cleanSpeech = stripMarkdownForSpeech(text);
+    const utterance = new SpeechSynthesisUtterance(cleanSpeech);
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+
+    activeSpeechUtterance = utterance;
+    activeSpeechBtn = btn;
+    if (iconSlot) iconSlot.innerHTML = `<svg class="w-3.5 h-3.5 tts-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`;
+    btn.classList.add('text-[#EA580C]');
+
+    utterance.onend = () => {
+      if (iconSlot) iconSlot.innerHTML = `<svg class="w-3.5 h-3.5 tts-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+      btn.classList.remove('text-[#EA580C]');
+      activeSpeechBtn = null;
+    };
+
+    utterance.onerror = () => {
+      if (iconSlot) iconSlot.innerHTML = `<svg class="w-3.5 h-3.5 tts-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+      btn.classList.remove('text-[#EA580C]');
+      activeSpeechBtn = null;
+    };
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  // --- COPY HELPERS ---
+  const SVG_COPY_ICON = `<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`;
+  const SVG_CHECK_ICON = `<svg class="w-3.5 h-3.5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+  window.copyCodeBlock = function(id, btn) {
+    const codeEl = document.getElementById(id);
+    if (!codeEl) return;
+    const text = codeEl.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const original = btn.innerHTML;
+      btn.innerHTML = `<span class="inline-flex items-center gap-1 text-emerald-400"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Copied!</span></span>`;
+      setTimeout(() => { btn.innerHTML = original; }, 2000);
+    });
+  };
+
+  // Helper to ensure clean, plain text copying without raw Markdown symbols
+  function cleanMarkdownForClipboard(rawText) {
+    if (!rawText) return '';
+    let text = rawText;
+    // Strip code fences
+    text = text.replace(/```[a-z]*\r?\n([\s\S]*?)```/gi, '$1');
+    // Strip bold & italic
+    text = text.replace(/\*\*\*(.*?)\*\*\*/g, '$1');
+    text = text.replace(/\*\*(.*?)\*\*/g, '$1');
+    text = text.replace(/\*(.*?)\*/g, '$1');
+    text = text.replace(/___(.*?)___/g, '$1');
+    text = text.replace(/__(.*?)__/g, '$1');
+    text = text.replace(/_(.*?)_/g, '$1');
+    // Strip headings markers #, ##, ###
+    text = text.replace(/^#{1,6}\s+/gm, '');
+    // Strip inline code backticks
+    text = text.replace(/`([^`]+)`/g, '$1');
+    // Strip blockquote markers >
+    text = text.replace(/^>\s+/gm, '');
+    // Strip markdown links [Text](url) -> Text
+    text = text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+    // Clean redundant line breaks
+    text = text.replace(/\n{3,}/g, '\n\n').trim();
+    return text;
+  }
+
+  function copyToClipboard(text, cb) {
+    if (navigator.clipboard && window.isSecureContext && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        if (cb) cb();
+      }).catch(() => {
+        fallbackCopyText(text, cb);
+      });
+    } else {
+      fallbackCopyText(text, cb);
+    }
+  }
+
+  function fallbackCopyText(text, cb) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.top = '0';
+    textarea.style.left = '0';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try {
+      const successful = document.execCommand('copy');
+      if (successful && cb) cb();
+    } catch (e) {
+      console.warn('Fallback copy failed:', e);
+    }
+    document.body.removeChild(textarea);
+  }
+
+  let activeUserSelectionText = '';
+
+  window.toggleUserCopyButton = function(bubble, event) {
+    // Retained for compatibility; copy action is strictly revealed via drag selection
+  };
+
+  window.copyUserQuestion = function(btn) {
+    const bubble = btn.closest('.user-message-bubble') || btn.parentElement;
+    const textEl = bubble ? bubble.querySelector('.user-query-text') : null;
+    const fullText = textEl ? textEl.innerText.trim() : (bubble ? bubble.innerText.trim() : '');
+    const textToCopy = (activeUserSelectionText && activeUserSelectionText.trim())
+      ? activeUserSelectionText.trim()
+      : fullText;
+
+    if (!textToCopy) return;
+
+    const textSpan = btn.querySelector('.copy-btn-label');
+    const iconSpan = btn.querySelector('.copy-btn-icon');
+    const originalIcon = iconSpan ? iconSpan.innerHTML : btn.innerHTML;
+    const originalLabel = textSpan ? textSpan.textContent : '';
+
+    copyToClipboard(textToCopy, () => {
+      if (iconSpan) iconSpan.innerHTML = `<span class="inline-flex items-center justify-center text-emerald-600">${SVG_CHECK_ICON}</span>`;
+      if (textSpan) {
+        textSpan.textContent = 'Copied!';
+        textSpan.className = 'copy-btn-label text-[11px] font-semibold text-emerald-600';
+      }
+      btn.setAttribute('title', 'Copied!');
+      setTimeout(() => {
+        if (iconSpan) iconSpan.innerHTML = originalIcon;
+        if (textSpan) {
+          textSpan.textContent = originalLabel || 'Copy';
+          textSpan.className = 'copy-btn-label text-[11px] font-medium text-slate-600';
+        }
+        btn.setAttribute('title', 'Copy Question');
+        const copySlot = btn.closest('.user-copy-action');
+        if (copySlot) copySlot.classList.add('hidden');
+        activeUserSelectionText = '';
+      }, 1500);
+    });
+  };
+
+  // Drag-to-Copy detection on user questions: copy button appears ONLY when user drags/selects text on their question
+  function handleUserDragSelection(e) {
+    if (e && e.target && e.target.closest('.copy-user-btn')) return;
+
+    setTimeout(() => {
+      const selection = window.getSelection();
+      if (!selection || selection.isCollapsed) {
+        // Simple click without drag or empty selection: hide user copy buttons
+        document.querySelectorAll('.user-copy-action').forEach(el => el.classList.add('hidden'));
+        activeUserSelectionText = '';
+        return;
+      }
+
+      const text = selection.toString().trim();
+      if (!text) {
+        document.querySelectorAll('.user-copy-action').forEach(el => el.classList.add('hidden'));
+        activeUserSelectionText = '';
+        return;
+      }
+
+      let anchorNode = selection.anchorNode;
+      if (anchorNode && anchorNode.nodeType === Node.TEXT_NODE) anchorNode = anchorNode.parentElement;
+      let focusNode = selection.focusNode;
+      if (focusNode && focusNode.nodeType === Node.TEXT_NODE) focusNode = focusNode.parentElement;
+
+      const bubble = (anchorNode && anchorNode.closest('.user-message-bubble')) ||
+                     (focusNode && focusNode.closest('.user-message-bubble'));
+
+      if (bubble) {
+        activeUserSelectionText = text;
+        document.querySelectorAll('.user-copy-action').forEach(el => {
+          if (!bubble.contains(el)) el.classList.add('hidden');
+        });
+        const copySlot = bubble.querySelector('.user-copy-action');
+        if (copySlot) {
+          copySlot.classList.remove('hidden');
+        }
+      } else {
+        document.querySelectorAll('.user-copy-action').forEach(el => el.classList.add('hidden'));
+        activeUserSelectionText = '';
+      }
+    }, 25);
+  }
+
+  document.addEventListener('mouseup', handleUserDragSelection);
+  document.addEventListener('touchend', handleUserDragSelection);
+
+  window.copyAiAnswer = function(btn) {
+    const card = btn.closest('.ai-response-card');
+    const prose = card ? card.querySelector('.ai-prose') : null;
+    if (!prose) return;
+
+    let text = (prose.innerText || '').trim();
+    text = cleanMarkdownForClipboard(text);
+
+    const onSuccess = () => {
+      const original = btn.innerHTML;
+      const origTitle = btn.getAttribute('title') || 'Copy Answer';
+      btn.innerHTML = `<span class="inline-flex items-center justify-center text-emerald-600">${SVG_CHECK_ICON}</span>`;
+      btn.setAttribute('title', 'Copied!');
+      setTimeout(() => {
+        btn.innerHTML = original;
+        btn.setAttribute('title', origTitle);
+      }, 2000);
+    };
+
+    copyToClipboard(text, onSuccess);
+  };
+
+  // --- MARKDOWN & RAG CONFIGURATION ---
+  function escapeHtml(str) {
+    return (str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  // Setup marked parser if available
+  let markedConfigured = false;
+
+  // Cleanly strip trailing raw Source: block so raw URLs never appear in the prose text
+  function stripTrailingSourceBlock(text) {
+    if (!text) return '';
+    return text.replace(/(\r?\n)+\s*(#{1,6}\s*|\*{0,2})Source:?[\s\S]*$/i, '').trim();
+  }
+
+  // Extract source metadata from text if not provided in structured form
+  function extractSourcesFromText(rawText) {
+    if (!rawText) return [];
+    const extracted = [];
+    const urlMatches = rawText.match(/https?:\/\/[^\s)\],]+/g);
+    if (urlMatches && urlMatches.length > 0) {
+      for (const url of urlMatches) {
+        if (url.includes('standards.bis.gov.in') || url.includes('bis.gov.in')) {
+          const isNum = rawText.match(/\b(IS\s+\d+(?::\d{4})?)\b/i);
+          extracted.push({
+            standard_number: isNum ? isNum[1].toUpperCase() : 'BIS Standard',
+            title: 'Bureau of Indian Standards Repository',
+            url: url
+          });
+          break;
+        }
+      }
+    }
+    return extracted;
+  }
+
+  function setupMarked() {
+    if (markedConfigured || typeof marked === 'undefined') return;
+
+    const renderer = new marked.Renderer();
+
+    // Safe, stylish links that never render raw ugly URLs
+    renderer.link = function({ href, title, text }) {
+      const isExternal = href && (href.startsWith('http://') || href.startsWith('https://'));
+      const targetAttr = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+      const titleAttr = title ? ` title="${escapeHtml(title)}"` : '';
+
+      // If the link text itself is a long raw URL, replace with clean friendly label
+      let displayText = text;
+      if (/^https?:\/\//i.test((text || '').trim())) {
+        try {
+          const parsed = new URL(text.trim());
+          displayText = 'BIS Portal (' + parsed.hostname.replace('www.', '') + ')';
+        } catch (e) {
+          displayText = 'Official BIS Link';
+        }
+      }
+
+      const icon = isExternal ? '<svg class="w-3.5 h-3.5 inline align-middle ml-1 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>' : '';
+      return `<a href="${escapeHtml(href)}"${targetAttr}${titleAttr} class="text-[#0D3B66] hover:text-[#EA580C] underline font-medium transition-colors">${displayText}${icon}</a>`;
+    };
+
+    // Syntax-highlighted code blocks with Copy button
+    renderer.code = function({ text, lang }) {
+      const cleanLang = (lang || 'text').toLowerCase().trim();
+      let highlighted = '';
+      if (typeof hljs !== 'undefined' && cleanLang && hljs.getLanguage(cleanLang)) {
+        try {
+          highlighted = hljs.highlight(text, { language: cleanLang }).value;
+        } catch (e) {
+          highlighted = escapeHtml(text);
+        }
+      } else if (typeof hljs !== 'undefined') {
+        try {
+          highlighted = hljs.highlightAuto(text).value;
+        } catch (e) {
+          highlighted = escapeHtml(text);
+        }
+      } else {
+        highlighted = escapeHtml(text);
+      }
+
+      const codeId = 'code-' + Math.random().toString(36).substring(2, 9);
+
+      return `<div class="ai-code-wrapper my-3 rounded-lg overflow-hidden border border-slate-800 bg-[#0f172a] text-slate-100 text-xs shadow-xs">
+        <div class="flex items-center justify-between px-3 py-1.5 bg-[#1e293b] border-b border-slate-700 text-[11px] font-mono text-slate-300">
+          <span class="uppercase tracking-wider font-semibold text-slate-400">${escapeHtml(cleanLang)}</span>
+          <button onclick="copyCodeBlock('${codeId}', this)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-700/60 hover:bg-slate-700 text-slate-200 hover:text-white transition-colors cursor-pointer text-[11px]">
+            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre class="p-3 overflow-x-auto text-[13px] font-mono leading-relaxed text-slate-100 m-0"><code id="${codeId}" class="hljs ${cleanLang}">${highlighted}</code></pre>
+      </div>`;
+    };
+
+    marked.use({
+      renderer,
+      gfm: true,
+      breaks: true
+    });
+
+    markedConfigured = true;
+  }
+
+  function renderMarkdown(rawText) {
+    if (!rawText) return '';
+    setupMarked();
+
+    // 1. Strip trailing raw source block so raw URLs never appear in the prose text
+    const cleanBody = stripTrailingSourceBlock(rawText);
+
+    // 2. Format section headers gracefully without forcing rigid 'Answer' prefix
+    let prepared = cleanBody
+      .replace(/^(\*{0,2}|#{1,6}\s*)Answer:?\*{0,2}\s*/i, '')
+      .replace(/^(\*{0,2}|#{1,6}\s*)Key points:?\*{0,2}\s*$/gmi, '### Key Points')
+      .replace(/^(\*{0,2}|#{1,6}\s*)Details:?\*{0,2}\s*$/gmi, '### Details');
+
+    let html = '';
+    if (typeof marked !== 'undefined') {
+      html = marked.parse(prepared);
+    } else {
+      html = escapeHtml(prepared).replace(/\n/g, '<br>');
+    }
+
+    // Wrap tables in responsive container for clean mobile scrolling
+    html = html.replace(/<table(\s|>)/gi, '<div class="overflow-x-auto my-3 border border-slate-200 rounded-lg shadow-2xs bg-white"><table class="w-full text-xs text-left border-collapse"$1').replace(/<\/table>/gi, '</table></div>');
+
+    if (typeof DOMPurify !== 'undefined') {
+      return DOMPurify.sanitize(html, {
+        ADD_ATTR: ['target', 'rel', 'onclick']
+      });
+    }
+    return html;
+  }
+
+  // Compact floating circular source button & revealed popover panel
+  function renderSourcesHtml(sources) {
+    if (!sources || sources.length === 0) return '';
+
+    // Deduplicate and filter authoritative retrieved sources
+    const validSources = [];
+    const seen = new Set();
+
+    for (const s of sources) {
+      if (!s) continue;
+      const stdNum = (s.standard_number || '').trim();
+      const title = (s.title || s.name || '').trim();
+      const url = s.url || s.source_url || 'https://standards.bis.gov.in/';
+
+      if (!stdNum && !title) continue;
+
+      const key = (stdNum || title).toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+
+      validSources.push({
+        standard_number: stdNum,
+        title: title,
+        url: url
+      });
+    }
+
+    if (validSources.length === 0) return '';
+
+    // Format list items: e.g. "IS 14543:2016" with title "Packaged Drinking Water"
+    const sourceRows = validSources.map(s => {
+      let std = s.standard_number;
+      let cleanTitle = s.title;
+
+      if (std && cleanTitle.startsWith(std)) {
+        cleanTitle = cleanTitle.substring(std.length).replace(/^[\s:—–-]+/, '').trim();
+      }
+
+      return `
+        <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" class="source-item-link group">
+          <div class="flex items-start justify-between gap-2.5">
+            <div class="min-w-0">
+              ${std ? `<div class="text-[12px] font-semibold text-[#002546] group-hover:text-[#EA580C] transition-colors leading-snug">${escapeHtml(std)}</div>` : ''}
+              ${cleanTitle ? `<div class="text-[11.5px] text-slate-600 line-clamp-2 leading-relaxed mt-0.5">${escapeHtml(cleanTitle)}</div>` : ''}
+            </div>
+            <svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-[#EA580C] shrink-0 mt-0.5 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+        </a>
+      `;
+    }).join('');
+
+    const count = validSources.length;
+    const label = `${count} ${count === 1 ? 'Source' : 'Sources'}`;
+
+    // Return single, subtle floating Source Button and revealed popover panel
+    return `
+      <div class="source-container">
+        <button type="button" class="source-btn source-toggle-btn" aria-haspopup="true" aria-expanded="false" title="View ${count} verified BIS sources">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#EA580C] shrink-0"></span>
+          <span>${label}</span>
+        </button>
+
+        <div class="source-panel" role="region" aria-label="Authoritative BIS Sources">
+          <div class="flex items-center justify-between px-2.5 py-1.5 mb-1.5 border-b border-slate-100">
+            <span class="text-[11px] font-semibold text-[#002546] tracking-wide">Sources</span>
+            <span class="text-[10px] font-mono text-slate-400 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-100">${count} verified</span>
+          </div>
+          <div class="source-panel-list flex flex-col gap-1 max-h-64 overflow-y-auto no-scrollbar">
+            ${sourceRows}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function setQuery(text) {
+    const input = document.getElementById('standardsSearchInput');
+    if (input) {
+      input.value = text;
+    }
+    submitQuery(text);
+  }
+
+  function followScrollIfAtBottom() {
+    const chatStream = document.getElementById('chatStream');
+    if (!chatStream) return;
+    const isAtBottom = (chatStream.scrollHeight - chatStream.scrollTop - chatStream.clientHeight) < 90;
+    if (isAtBottom) {
+      chatStream.scrollTop = chatStream.scrollHeight;
+    }
+  }
+
+  function appendUserBubble(query, imageAttachment) {
+    const chatStream = document.getElementById('chatStream');
+    if (!chatStream) return;
+
+    let imageTag = '';
+    if (imageAttachment) {
+      const isDoc = typeof imageAttachment === 'object' ? !!imageAttachment.isDocument : (typeof imageAttachment === 'string' && !imageAttachment.startsWith('data:image/'));
+      const imgSrc = typeof imageAttachment === 'object' ? imageAttachment.data : imageAttachment;
+      const fileName = (typeof imageAttachment === 'object' ? imageAttachment.name : null) || 'Attached Document';
+
+      if (!isDoc && imgSrc && (imgSrc.startsWith('data:image/') || imgSrc.startsWith('http') || imgSrc.startsWith('blob:'))) {
+        imageTag = `
+          <div class="mb-2">
+            <img src="${imgSrc}" class="max-h-40 rounded-lg object-contain border border-orange-200/50" alt="Scanned standard">
+          </div>
+        `;
+      } else {
+        imageTag = `
+          <div class="mb-2.5 p-2 bg-orange-100/70 border border-orange-200/80 rounded-xl flex items-center gap-2.5 max-w-sm">
+            <div class="w-7 h-7 rounded-lg bg-white text-[#EA580C] shadow-2xs flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <div class="min-w-0 flex-1 text-left">
+              <div class="text-xs font-semibold text-slate-800 truncate">${escapeHtml(fileName)}</div>
+              <div class="text-[10px] text-slate-500 font-normal">Document Attached</div>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    const userDiv = document.createElement('div');
+    userDiv.className = 'flex justify-end w-full animate-fade-in group user-message-wrapper';
+    userDiv.innerHTML = `
+      <div class="relative max-w-[85%] bg-[#FFF7F2] border border-[#F4511E]/20 text-[#1C1D1F] px-4 py-3 rounded-2xl rounded-tr-xs shadow-xs user-bubble-text user-message-bubble font-medium break-words box-border select-text transition-all hover:border-orange-300/60">
+        ${imageTag}
+        <div class="user-query-text select-text">${escapeHtml(query)}</div>
+        <div class="user-copy-action hidden mt-2 pt-1.5 border-t border-orange-200/50 flex justify-end animate-fade-in">
+          <button type="button" onmousedown="event.preventDefault();" onclick="event.stopPropagation(); copyUserQuestion(this);" class="ai-action-btn copy-user-btn text-xs text-slate-600 hover:text-[#EA580C] flex items-center gap-1.5 py-1 px-2.5 rounded-lg bg-orange-100/70 hover:bg-orange-100 border border-orange-200/60 transition-all cursor-pointer active:scale-95 shadow-2xs" title="Copy Question" aria-label="Copy Question">
+            <span class="copy-btn-icon flex items-center justify-center">
+              <svg class="w-3.5 h-3.5 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </span>
+            <span class="copy-btn-label text-[11px] font-medium text-slate-600">Copy</span>
+          </button>
+        </div>
+      </div>
+    `;
+    chatStream.appendChild(userDiv);
+    chatStream.scrollTop = chatStream.scrollHeight;
+  }
+
+  // Minimal, elegant three-dot loading indicator
+  function appendLoadingBubble(loadingId) {
+    const chatStream = document.getElementById('chatStream');
+    if (!chatStream) return;
+
+    // Clean up any existing loading indicators first
+    removeLoadingBubble();
+
+    const loadingDiv = document.createElement('div');
+    loadingDiv.id = loadingId;
+    loadingDiv.className = 'flex justify-start w-full animate-fade-in loading-indicator-bubble';
+    loadingDiv.innerHTML = `
+      <div class="bg-white border border-slate-200/80 px-4 py-3 rounded-2xl shadow-xs flex items-center">
+        <div class="flex items-center gap-1.5 py-1 px-0.5">
+          <span class="w-2 h-2 rounded-full bg-slate-400 animate-bounce [animation-delay:-0.3s]"></span>
+          <span class="w-2 h-2 rounded-full bg-slate-400 animate-bounce [animation-delay:-0.15s]"></span>
+          <span class="w-2 h-2 rounded-full bg-slate-400 animate-bounce"></span>
+        </div>
+      </div>
+    `;
+    chatStream.appendChild(loadingDiv);
+    chatStream.scrollTop = chatStream.scrollHeight;
+  }
+
+  function removeLoadingBubble(loadingId) {
+    if (loadingId) {
+      const el = document.getElementById(loadingId);
+      if (el) el.remove();
+    }
+    // Safety check: unconditionally clean up any loading indicators in chatStream
+    const chatStream = document.getElementById('chatStream');
+    if (chatStream) {
+      const loaders = chatStream.querySelectorAll('.loading-indicator-bubble, [id^="loading-"]');
+      loaders.forEach(l => l.remove());
+    }
+  }
+
+  function appendAiBubble(answerText, results, sources, retryQuery = null) {
+    const chatStream = document.getElementById('chatStream');
+    if (!chatStream) return;
+
+    let retryHtml = '';
+    if (retryQuery) {
+      retryHtml = `
+        <div class="mt-3 pt-2 border-t border-red-100 flex items-center gap-2">
+          <button class="px-3 py-1 bg-[#EA580C] hover:bg-[#D84315] text-white text-xs font-semibold rounded-full flex items-center gap-1 cursor-pointer active:scale-95 transition-transform" onclick="submitQuery('${retryQuery.replace(/'/g, "\\'")}')">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21h5v-5"/></svg>
+            <span>Retry Query</span>
+          </button>
+        </div>
+      `;
+    }
+
+    const effectiveSources = (sources && sources.length > 0)
+      ? sources
+      : (results && results.length > 0)
+        ? results.map(r => ({ standard_number: r.standard_number, title: r.title, url: r.source_url }))
+        : extractSourcesFromText(answerText);
+
+    const sourcesHtml = renderSourcesHtml(effectiveSources);
+
+    const aiDiv = document.createElement('div');
+    aiDiv.className = 'flex justify-start w-full animate-fade-in ai-response-card';
+    aiDiv.innerHTML = `
+      <div class="w-full bg-white border border-slate-200/90 p-4 sm:p-5 rounded-2xl shadow-xs box-border overflow-hidden">
+        <div class="ai-prose">
+          ${renderMarkdown(answerText)}
+        </div>
+        <div class="ai-bottom-actions mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs flex-wrap gap-2">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <button class="ai-action-btn copy-answer-btn" onclick="copyAiAnswer(this)" title="Copy Answer" aria-label="Copy Answer">
+              <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+            <button class="ai-action-btn tts-btn" onclick="speakAnswer(this, decodeURIComponent('${encodeURIComponent(answerText)}'))" title="Read Aloud" aria-label="Read Aloud">
+              <span class="tts-icon-slot flex items-center justify-center">
+                <svg class="w-3.5 h-3.5 tts-icon text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </span>
+            </button>
+          </div>
+          <div class="ai-sources-slot inline-flex items-center">
+            ${sourcesHtml || ''}
+          </div>
+        </div>
+        ${retryHtml}
+      </div>
+    `;
+    chatStream.appendChild(aiDiv);
+    chatStream.scrollTop = chatStream.scrollHeight;
+  }
+
+  // SVG Icon Templates for Send and Stop states
+  const SEND_ICON_SVG = `<svg class="w-4 h-4 sm:w-5 sm:h-5 ml-0.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>`;
+  const STOP_ICON_SVG = `<svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>`;
+
+  // Request & Generation Lifecycle State
+  let currentRequestId = 0;
+  let activeAbortController = null;
+  let activeStreamReader = null;
+  let isGenerating = false;
+  let isManuallyStopped = false;
+  let lastSubmitTime = 0;
+
+  // Toggle button between Send and Stop states
+  function setGeneratingState(isGen) {
+    const btn = document.getElementById('sendPromptBtn');
+    const input = document.getElementById('standardsSearchInput');
+    const iconSlot = document.getElementById('sendStopIconSlot');
+
+    if (btn) {
+      if (isGen) {
+        btn.setAttribute('aria-label', 'Stop generating');
+        btn.setAttribute('title', 'Stop generating');
+        if (iconSlot) {
+          iconSlot.innerHTML = STOP_ICON_SVG;
+        } else {
+          btn.innerHTML = `<span id="sendStopIconSlot" class="flex items-center justify-center">${STOP_ICON_SVG}</span>`;
+        }
+      } else {
+        btn.setAttribute('aria-label', 'Send message');
+        btn.setAttribute('title', 'Send message');
+        if (iconSlot) {
+          iconSlot.innerHTML = SEND_ICON_SVG;
+        } else {
+          btn.innerHTML = `<span id="sendStopIconSlot" class="flex items-center justify-center">${SEND_ICON_SVG}</span>`;
+        }
+      }
+    }
+
+    if (input) {
+      input.disabled = isGen;
+      if (!isGen) {
+        setTimeout(() => input.focus(), 60);
+      }
+    }
+  }
+
+  // Abort active generation immediately
+  function stopGeneration() {
+    if (!isGenerating) return;
+    isManuallyStopped = true;
+    if (activeAbortController) {
+      try {
+        activeAbortController.abort();
+      } catch (e) {}
+    }
+    if (activeStreamReader) {
+      try {
+        activeStreamReader.cancel();
+      } catch (e) {}
+      activeStreamReader = null;
+    }
+  }
+
+  // Dispatch click to either Send or Stop
+  window.handleSendOrStop = function() {
+    if (isGenerating) {
+      // Prevent accidental double-click from immediately stopping
+      if (Date.now() - lastSubmitTime < 300) return;
+      stopGeneration();
+    } else {
+      lastSubmitTime = Date.now();
+      submitQuery();
+    }
+  };
+
+  // Streaming AI Card lifecycle helpers
+  function createStreamingAiBubble(cardId) {
+    const chatStream = document.getElementById('chatStream');
+    if (!chatStream) return null;
+
+    const aiDiv = document.createElement('div');
+    aiDiv.id = cardId;
+    aiDiv.className = 'flex justify-start w-full animate-fade-in ai-response-card';
+    aiDiv.innerHTML = `
+      <div class="w-full bg-white border border-slate-200/90 p-4 sm:p-5 rounded-2xl shadow-xs box-border overflow-hidden">
+        <div class="ai-prose"></div>
+        <div class="ai-bottom-actions mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs flex-wrap gap-2 hidden">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <button class="ai-action-btn copy-answer-btn" onclick="copyAiAnswer(this)" title="Copy Answer" aria-label="Copy Answer">
+              <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+            <button class="ai-action-btn tts-btn" onclick="speakAnswer(this)" title="Read Aloud" aria-label="Read Aloud">
+              <span class="tts-icon-slot flex items-center justify-center">
+                <svg class="w-3.5 h-3.5 tts-icon text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </span>
+            </button>
+          </div>
+          <div class="ai-sources-slot inline-flex items-center"></div>
+        </div>
+      </div>
+    `;
+    chatStream.appendChild(aiDiv);
+    chatStream.scrollTop = chatStream.scrollHeight;
+    return aiDiv;
+  }
+
+  function updateStreamingAiBubble(cardId, accumulatedText) {
+    const card = document.getElementById(cardId);
+    if (!card) return;
+    const prose = card.querySelector('.ai-prose');
+    if (prose) {
+      prose.innerHTML = renderMarkdown(accumulatedText);
+    }
+    followScrollIfAtBottom();
+  }
+
+  function finalizeStreamingAiBubble(cardId, fullText, sources) {
+    const card = document.getElementById(cardId);
+    if (!card) return;
+
+    const prose = card.querySelector('.ai-prose');
+    if (prose) {
+      if (fullText && fullText.trim()) {
+        prose.innerHTML = renderMarkdown(fullText);
+      } else {
+        prose.innerHTML = '<p class="text-slate-500 italic text-sm">Response stopped.</p>';
+      }
+    }
+
+    if (fullText && fullText.trim()) {
+      const bottomActions = card.querySelector('.ai-bottom-actions');
+      if (bottomActions) {
+        bottomActions.classList.remove('hidden');
+        const ttsBtn = bottomActions.querySelector('.tts-btn');
+        if (ttsBtn) {
+          ttsBtn.setAttribute('onclick', `speakAnswer(this, decodeURIComponent('${encodeURIComponent(fullText)}'))`);
+        }
+        const effectiveSources = (sources && sources.length > 0)
+          ? sources
+          : extractSourcesFromText(fullText);
+        const sourcesSlot = card.querySelector('.ai-sources-slot');
+        if (sourcesSlot) {
+          sourcesSlot.innerHTML = renderSourcesHtml(effectiveSources);
+        }
+      }
+    }
+    followScrollIfAtBottom();
+  }
+
+  // Main Submit Query Execution with Atomic Validated Streaming Pipeline
+  async function submitQuery(customQuery) {
+    if (isGenerating) return;
+
+    const input = document.getElementById('standardsSearchInput');
+    const query = (customQuery !== undefined ? customQuery : (input ? input.value : '')).trim();
+
+    // If both query and image are empty, do nothing
+    if (!query && !currentAttachedImage) return;
+
+    // If image is attached but user entered no question, prompt user to write their question
+    if (!query && currentAttachedImage) {
+      showValidationHint('Please enter a question about the image.');
+      if (input) input.focus();
+      return;
+    }
+
+    hideValidationHint();
+
+    const queryToSend = query;
+    const imageToSend = currentAttachedImage;
+
+    if (input) input.value = '';
+    hideAttachmentPreview();
+
+    // Cancel any ongoing in-flight request to eliminate race conditions
+    if (activeAbortController) {
+      try {
+        activeAbortController.abort();
+      } catch (e) {}
+    }
+    activeAbortController = new AbortController();
+    const thisRequestId = ++currentRequestId;
+    isGenerating = true;
+    isManuallyStopped = false;
+    setGeneratingState(true);
+
+    // Button micro-interaction
+    const btn = document.getElementById('sendPromptBtn');
+    if (btn) {
+      btn.classList.add('scale-90');
+      setTimeout(() => btn.classList.remove('scale-90'), 150);
+    }
+
+    const branding = document.getElementById('brandingCenter');
+    const chatStream = document.getElementById('chatStream');
+
+    if (branding) branding.classList.add('hidden');
+    if (chatStream) chatStream.classList.remove('hidden');
+
+    appendUserBubble(queryToSend, imageToSend);
+    const loadingId = 'loading-' + thisRequestId;
+    const cardId = 'ai-card-' + thisRequestId;
+    appendLoadingBubble(loadingId);
+
+    // Ensure active tab session is established
+    if (!currentActiveTab) {
+      currentActiveTab = queryToSend;
+    }
+
+    // Save user turn in isolated tab session
+    saveTabTurn(currentActiveTab, {
+      role: 'user',
+      content: queryToSend,
+      image: imageToSend ? {
+        mimeType: imageToSend.mimeType,
+        data: imageToSend.data,
+        name: imageToSend.name,
+        isDocument: imageToSend.isDocument
+      } : null
+    }, null);
+
+    // Save user turn in history
+    conversationHistory.push({
+      role: 'user',
+      query: queryToSend,
+      content: queryToSend,
+      image: imageToSend ? { mimeType: imageToSend.mimeType, name: imageToSend.name } : null
+    });
+
+    if (queryToSend) {
+      try {
+        let hist = JSON.parse(localStorage.getItem('manak_history') || localStorage.getItem('bis_history') || '[]');
+        hist = hist.filter(item => item && item.toLowerCase() !== queryToSend.toLowerCase());
+        hist.unshift(queryToSend);
+        const saved = JSON.stringify(hist.slice(0, 15));
+        localStorage.setItem('manak_history', saved);
+        localStorage.setItem('bis_history', saved);
+        if (typeof window.renderSidebarRecents === 'function') {
+          window.renderSidebarRecents();
+        }
+      } catch (e) {}
+    }
+
+    const currentLang = localStorage.getItem('manak_lang') || 'en';
+    const payload = {
+      requestId: 'req-' + thisRequestId,
+      query: queryToSend,
+      image: imageToSend ? {
+        mimeType: imageToSend.mimeType,
+        data: imageToSend.data,
+        name: imageToSend.name,
+        isDocument: !!imageToSend.isDocument
+      } : null,
+      history: conversationHistory,
+      context: currentConversationContext,
+      language: currentLang
+    };
+
+    let accumulatedAnswer = '';
+    let currentSources = [];
+    let cardCreated = false;
+    let modelTurnSaved = false;
+
+    // ATOMIC STREAMING VALIDATED RESPONSE PIPELINE:
+    // Only the final validated AI response is streamed to the user.
+    try {
+      const searchEndpoint = window.location.protocol.startsWith('http')
+        ? '/api/search/stream'
+        : 'http://localhost:3000/api/search/stream';
+
+      const response = await fetch(searchEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: activeAbortController.signal
+      });
+
+      if (thisRequestId !== currentRequestId) return;
+
+      const contentType = response.headers.get('content-type') || '';
+
+      if (response.ok && contentType.includes('text/event-stream') && response.body) {
+        const reader = response.body.getReader();
+        activeStreamReader = reader;
+        const decoder = new TextDecoder('utf-8');
+        let partialBuffer = '';
+
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            if (thisRequestId !== currentRequestId || (activeAbortController && activeAbortController.signal.aborted)) {
+              try { await reader.cancel(); } catch (e) {}
+              break;
+            }
+
+            partialBuffer += decoder.decode(value, { stream: true });
+            const lines = partialBuffer.split('\n');
+            partialBuffer = lines.pop();
+
+            for (const line of lines) {
+              const trimmed = line.trim();
+              if (trimmed.startsWith('data: ')) {
+                const jsonStr = trimmed.slice(6);
+                try {
+                  const event = JSON.parse(jsonStr);
+                  if (thisRequestId !== currentRequestId || (activeAbortController && activeAbortController.signal.aborted)) break;
+
+                  if (event.type === 'meta') {
+                    if (event.context) currentConversationContext = event.context;
+                    currentSources = event.sources || event.results || [];
+                  } else if (event.type === 'chunk') {
+                    const chunkText = event.text || event.chunk || '';
+                    if (!chunkText) continue;
+
+                    // As soon as response content is available:
+                    // hide 3-dot indicator and show the actual response text immediately
+                    if (!cardCreated) {
+                      removeLoadingBubble(loadingId);
+                      createStreamingAiBubble(cardId);
+                      cardCreated = true;
+                    }
+                    accumulatedAnswer += chunkText;
+                    updateStreamingAiBubble(cardId, accumulatedAnswer);
+                  } else if (event.type === 'done') {
+                    if (event.context) currentConversationContext = event.context;
+                    if (event.sources && event.sources.length > 0) currentSources = event.sources;
+                    const finalTxt = event.finalAnswer || event.answer || '';
+                    if (finalTxt && !accumulatedAnswer) accumulatedAnswer = finalTxt;
+
+                    // Immediately remove 3-dot indicator and display complete answer
+                    removeLoadingBubble(loadingId);
+                    if (!cardCreated && accumulatedAnswer) {
+                      createStreamingAiBubble(cardId);
+                      cardCreated = true;
+                    }
+                    if (cardCreated && accumulatedAnswer) {
+                      updateStreamingAiBubble(cardId, accumulatedAnswer);
+                      finalizeStreamingAiBubble(cardId, accumulatedAnswer, currentSources);
+                    }
+                    if (!modelTurnSaved && accumulatedAnswer) {
+                      saveTabTurn(currentActiveTab, null, {
+                        role: 'model',
+                        content: accumulatedAnswer,
+                        sources: currentSources,
+                        results: []
+                      });
+                      modelTurnSaved = true;
+                    }
+                  } else if (event.type === 'error') {
+                    throw new Error(event.error || 'Server stream error');
+                  }
+                } catch (parseErr) {
+                  if (parseErr.message && parseErr.message.includes('Server stream error')) throw parseErr;
+                }
+              }
+            }
+          }
+        } finally {
+          try { reader.releaseLock(); } catch (e) {}
+        }
+
+        if (thisRequestId !== currentRequestId) return;
+
+        removeLoadingBubble(loadingId);
+        if (accumulatedAnswer) {
+          if (!cardCreated) {
+            createStreamingAiBubble(cardId);
+            cardCreated = true;
+          }
+          finalizeStreamingAiBubble(cardId, accumulatedAnswer, currentSources);
+          conversationHistory.push({
+            role: 'model',
+            content: accumulatedAnswer
+          });
+          if (!modelTurnSaved) {
+            saveTabTurn(currentActiveTab, null, {
+              role: 'model',
+              content: accumulatedAnswer,
+              sources: currentSources,
+              results: []
+            });
+            modelTurnSaved = true;
+          }
+        }
+      } else {
+        // Fallback for non-streamed JSON response: immediately remove 3-dot indicator
+        removeLoadingBubble(loadingId);
+        const data = await response.json();
+        if (thisRequestId !== currentRequestId) return;
+
+        if (response.ok && data) {
+          if (data.context) currentConversationContext = data.context;
+          conversationHistory.push({
+            role: 'model',
+            content: data.answer
+          });
+          appendAiBubble(data.answer, data.results, data.sources);
+          saveTabTurn(currentActiveTab, null, {
+            role: 'model',
+            content: data.answer,
+            sources: data.sources || [],
+            results: data.results || []
+          });
+          modelTurnSaved = true;
+        } else {
+          appendAiBubble(data?.error || "I'm unable to retrieve BIS information right now. Please try again.", [], [], queryToSend);
+        }
+      }
+    } catch (err) {
+      if (thisRequestId !== currentRequestId) return;
+
+      const wasAborted = (err && err.name === 'AbortError') ||
+                         (activeAbortController && activeAbortController.signal.aborted) ||
+                         isManuallyStopped;
+
+      if (wasAborted) {
+        // Manual STOP by user:
+        // 1. Remove loading bubble immediately
+        removeLoadingBubble(loadingId);
+        // 2. Preserve partial response if card was created
+        if (cardCreated) {
+          finalizeStreamingAiBubble(cardId, accumulatedAnswer, currentSources);
+          if (accumulatedAnswer && accumulatedAnswer.trim()) {
+            conversationHistory.push({
+              role: 'model',
+              content: accumulatedAnswer
+            });
+            if (!modelTurnSaved) {
+              saveTabTurn(currentActiveTab, null, {
+                role: 'model',
+                content: accumulatedAnswer,
+                sources: currentSources,
+                results: []
+              });
+              modelTurnSaved = true;
+            }
+          }
+        }
+        // 3. Do NOT show cancellation as an error
+        return;
+      }
+
+      console.warn('API fetch error:', err);
+      removeLoadingBubble(loadingId);
+      appendAiBubble("I'm unable to retrieve BIS information right now. Please check network connection and try again.", [], [], queryToSend);
+    } finally {
+      removeLoadingBubble(loadingId);
+      if (thisRequestId === currentRequestId) {
+        isGenerating = false;
+        activeAbortController = null;
+        activeStreamReader = null;
+        setGeneratingState(false);
+      }
+    }
+
+    followScrollIfAtBottom();
+  }
+
+  // Handle Enter Key press & Shift+Enter (disallow submit while generating)
+  document.getElementById('standardsSearchInput')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      if (!isGenerating) {
+        submitQuery();
+      }
+    }
+  });
+
+  // Clear validation hint as soon as user types
+  document.getElementById('standardsSearchInput')?.addEventListener('input', () => {
+    hideValidationHint();
+  });
+
+  // Query parameter handling from Landing Page & Pending Images
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check if an image or document was captured/selected on the Landing page
+    let pendingAttachment = null;
+    try {
+      const rawPending = sessionStorage.getItem('pending_attachment') || localStorage.getItem('manak_pending_attachment');
+      if (rawPending) {
+        pendingAttachment = JSON.parse(rawPending);
+      }
+    } catch (e) {}
+
+    if (!pendingAttachment) {
+      const pendingImage = sessionStorage.getItem('pending_image') || localStorage.getItem('manak_pending_image');
+      const pendingName = sessionStorage.getItem('pending_image_name') || localStorage.getItem('manak_pending_image_name') || 'Attached Photo';
+      if (pendingImage) {
+        pendingAttachment = {
+          mimeType: 'image/jpeg',
+          data: pendingImage,
+          name: pendingName,
+          isDocument: false
+        };
+      }
+    }
+
+    if (pendingAttachment && pendingAttachment.data) {
+      currentAttachedImage = {
+        mimeType: pendingAttachment.mimeType || 'image/jpeg',
+        data: pendingAttachment.data,
+        name: pendingAttachment.name || 'Attached Photo',
+        isDocument: !!pendingAttachment.isDocument,
+        size: pendingAttachment.size || 0
+      };
+      showAttachmentPreview(pendingAttachment.data, pendingAttachment.name, !!pendingAttachment.isDocument, pendingAttachment.mimeType);
+      const input = document.getElementById('standardsSearchInput');
+      if (input) {
+        input.placeholder = pendingAttachment.isDocument
+          ? "Ask a question about this document..."
+          : "Ask a question about this photo (e.g. Is this product BIS certified?)...";
+        input.focus();
+      }
+    }
+
+    // Clean up temporary pending storage
+    try {
+      sessionStorage.removeItem('pending_attachment');
+      sessionStorage.removeItem('pending_image');
+      sessionStorage.removeItem('pending_image_name');
+      localStorage.removeItem('manak_pending_attachment');
+      localStorage.removeItem('manak_pending_image');
+      localStorage.removeItem('manak_pending_image_name');
+    } catch (e) {}
+
+    // Check tab, query, or view params
+    const urlParams = new URLSearchParams(window.location.search);
+    const incomingTab = urlParams.get('tab');
+    const incomingQuery = urlParams.get('q');
+    const incomingView = urlParams.get('view');
+
+    // Clear the query parameter from URL to prevent duplicate submission on page refresh
+    const cleanUrl = window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
+
+    if (incomingTab && incomingTab.trim() !== '') {
+      window.loadRecentTab(incomingTab.trim());
+      return;
+    }
+
+    if (window.location.pathname === '/history' || incomingView === 'history') {
+      if (typeof window.openProfileModal === 'function') {
+        setTimeout(() => window.openProfileModal(), 50);
+      }
+      return;
+    }
+
+    if (incomingQuery && incomingQuery.trim() !== '') {
+      const decodedQuery = incomingQuery.trim();
+      const forbiddenAutoQueries = [
+        'recents view all',
+        'recent bis standards searches',
+        'view all',
+        'see all',
+        'recents',
+        'viewall'
+      ];
+
+      if (forbiddenAutoQueries.includes(decodedQuery.toLowerCase())) {
+        if (typeof window.openProfileModal === 'function') {
+          setTimeout(() => window.openProfileModal(), 50);
+        }
+        return;
+      }
+
+      const input = document.getElementById('standardsSearchInput');
+      if (input) {
+        input.value = decodedQuery;
+      }
+
+      // Automatically execute the search only when an explicit query was passed in the URL
+      submitQuery(decodedQuery);
+    }
+  });
+
+  // Handle mobile tap & click outside for compact source popovers
+  document.addEventListener('click', (e) => {
+    const toggleTarget = e.target.closest('.source-btn') || e.target.closest('.source-toggle-btn') || e.target.closest('.source-label-hint');
+    if (toggleTarget) {
+      e.preventDefault();
+      e.stopPropagation();
+      const container = toggleTarget.closest('.source-container');
+      if (container) {
+        const wasActive = container.classList.contains('is-active');
+        document.querySelectorAll('.source-container.is-active').forEach(c => c.classList.remove('is-active'));
+        if (!wasActive) {
+          container.classList.add('is-active');
+        }
+      }
+      return;
+    }
+
+    if (!e.target.closest('.source-panel')) {
+      document.querySelectorAll('.source-container.is-active').forEach(c => {
+        c.classList.remove('is-active');
+      });
+    }
+
+    if (!e.target.closest('.copy-user-btn')) {
+      const sel = window.getSelection();
+      if (!sel || sel.isCollapsed) {
+        document.querySelectorAll('.user-copy-action').forEach(c => {
+          c.classList.add('hidden');
+        });
+      }
+    }
+  });
+</script></main>
+
+
+
+</body></html>
