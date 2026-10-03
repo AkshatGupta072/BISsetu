@@ -1,9 +1,5 @@
 # BISsetu
-# BISsetu (BIS Setu) — BIS AI Assistant
-
 > AI Assistant for Indian Standards, Bureau of Indian Standards (BIS) Certification Schemes, Compliance, and Quality Control Orders (QCOs).
-
----
 
 ## Overview
 
